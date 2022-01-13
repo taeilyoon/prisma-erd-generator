@@ -1,0 +1,1289 @@
+{
+    "components": {
+        "schemas": {
+            "UserModel": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string", "nullable": true },
+                    "nick": { "type": "string", "nullable": true },
+                    "gender": {
+                        "$ref": "#/components/schemas/Gender",
+                        "nullable": true
+                    },
+                    "phone": { "type": "string", "nullable": true },
+                    "hashedPassword": { "type": "string", "nullable": false },
+                    "email": { "type": "string", "nullable": false },
+                    "birth": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "userId": { "type": "string", "nullable": true },
+                    "accepted": {
+                        "$ref": "#/components/schemas/AcceptedType",
+                        "nullable": true
+                    },
+                    "isAdmin": { "nullable": true },
+                    "blockUntil": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "blockLounge": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "blockChat": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "usedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "like": { "type": "int", "nullable": true },
+                    "card": {
+                        "$ref": "#/components/schemas/CardModel",
+                        "nullable": false
+                    },
+                    "ChatModel": {
+                        "$ref": "#/components/schemas/ChatModel",
+                        "nullable": true
+                    },
+                    "writeKlubReview": {
+                        "$ref": "#/components/schemas/KlubReview",
+                        "nullable": true
+                    },
+                    "md": {
+                        "$ref": "#/components/schemas/MdModel",
+                        "nullable": true
+                    },
+                    "MdRequestModel": {
+                        "$ref": "#/components/schemas/MdRequestModel",
+                        "nullable": true
+                    },
+                    "niceIdentify": {
+                        "$ref": "#/components/schemas/NiceIdentify",
+                        "nullable": false
+                    },
+                    "notification": {
+                        "$ref": "#/components/schemas/NotificationModel",
+                        "nullable": false
+                    },
+                    "PostComment": {
+                        "$ref": "#/components/schemas/LoungePostCommentModel",
+                        "nullable": true
+                    },
+                    "Post": {
+                        "$ref": "#/components/schemas/LoungePostModel",
+                        "nullable": true
+                    },
+                    "Reservation": {
+                        "$ref": "#/components/schemas/Reservation",
+                        "nullable": true
+                    },
+                    "ReviewLikeModel": {
+                        "$ref": "#/components/schemas/KlubReviewLikeModel",
+                        "nullable": true
+                    },
+                    "securities": {
+                        "$ref": "#/components/schemas/Securities",
+                        "nullable": false
+                    },
+                    "sassion": {
+                        "$ref": "#/components/schemas/SessionModel",
+                        "nullable": true
+                    },
+                    "setting": {
+                        "$ref": "#/components/schemas/UserSettingProfileModel",
+                        "nullable": false
+                    },
+                    "UsersOnChatRooms": {
+                        "$ref": "#/components/schemas/UsersOnChatRooms",
+                        "nullable": true
+                    },
+                    "report": {
+                        "$ref": "#/components/schemas/ReportBaseModel",
+                        "nullable": true
+                    },
+                    "reported": {
+                        "$ref": "#/components/schemas/ReportBaseModel",
+                        "nullable": true
+                    },
+                    "ReportBaseModel": {
+                        "$ref": "#/components/schemas/ReportBaseModel",
+                        "nullable": true
+                    },
+                    "LoungePostCommentLikeModel": {
+                        "$ref": "#/components/schemas/LoungePostCommentLikeModel",
+                        "nullable": true
+                    },
+                    "LoungePostLikeModel": {
+                        "$ref": "#/components/schemas/LoungePostLikeModel",
+                        "nullable": true
+                    },
+                    "beLike": {
+                        "$ref": "#/components/schemas/MdLikeHistory",
+                        "nullable": true
+                    },
+                    "myLikesMd": {
+                        "$ref": "#/components/schemas/MdLikeHistory",
+                        "nullable": true
+                    }
+                }
+            },
+            "NotificationModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": true },
+                    "title": { "type": "string", "nullable": true },
+                    "content": { "type": "string", "nullable": true },
+                    "data": { "type": "object", "nullable": false },
+                    "dataStr": { "type": "string", "nullable": false },
+                    "image": { "type": "string", "nullable": true },
+                    "readAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "NiceIdentify": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": true },
+                    "requestId": { "type": "string", "nullable": false },
+                    "responseId": { "type": "string", "nullable": false },
+                    "authMethod": { "type": "string", "nullable": false },
+                    "nationalInfo": { "type": "string", "nullable": false },
+                    "duplicateInfo": { "type": "string", "nullable": false },
+                    "connectionInfo": { "type": "string", "nullable": false },
+                    "mobile": { "type": "string", "nullable": false },
+                    "mobileCompany": { "type": "string", "nullable": false },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "Securities": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": true },
+                    "cashKRW": { "nullable": true },
+                    "cashUSD": { "nullable": true },
+                    "flowerKRW": { "nullable": true },
+                    "flowerUSD": { "nullable": true },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "SessionModel": {
+                "type": "object",
+                "properties": {
+                    "sessionId": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": true },
+                    "platform": { "type": "string", "nullable": true },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    },
+                    "usedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    }
+                }
+            },
+            "MdModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": true },
+                    "klubId": { "type": "string", "nullable": true },
+                    "isManager": { "nullable": true },
+                    "isSubManager": { "nullable": true },
+                    "allows": {
+                        "$ref": "#/components/schemas/MdPermission",
+                        "nullable": true
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    },
+                    "Reservation": {
+                        "$ref": "#/components/schemas/Reservation",
+                        "nullable": true
+                    }
+                }
+            },
+            "MdLikeHistory": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "likedMd": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    },
+                    "MdId": { "type": "string", "nullable": true },
+                    "UserModel": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": false
+                    },
+                    "userModelUserId": { "type": "string", "nullable": true }
+                }
+            },
+            "klubLikeHistory": {
+                "type": "object",
+                "properties": { "id": { "type": "string", "nullable": true } }
+            },
+            "Klub": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "name": { "type": "string", "nullable": true },
+                    "logo": { "type": "string", "nullable": false },
+                    "banner": { "type": "string", "nullable": true },
+                    "phone": { "type": "string", "nullable": true },
+                    "isShown": { "nullable": true },
+                    "hashTag": { "type": "string", "nullable": true },
+                    "musicTag": { "type": "string", "nullable": true },
+                    "lat": { "nullable": true },
+                    "lng": { "nullable": true },
+                    "address": { "type": "string", "nullable": true },
+                    "star": { "nullable": true },
+                    "acceptAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "accepted": {
+                        "$ref": "#/components/schemas/AcceptedType",
+                        "nullable": true
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "profileUrl": { "type": "string", "nullable": false },
+                    "message": { "type": "string", "nullable": true },
+                    "klubInfo": {
+                        "$ref": "#/components/schemas/KlubInfo",
+                        "nullable": false
+                    },
+                    "reviews": {
+                        "$ref": "#/components/schemas/KlubReview",
+                        "nullable": true
+                    },
+                    "md": {
+                        "$ref": "#/components/schemas/MdModel",
+                        "nullable": true
+                    },
+                    "MdRequestModel": {
+                        "$ref": "#/components/schemas/MdRequestModel",
+                        "nullable": true
+                    },
+                    "Reservation": {
+                        "$ref": "#/components/schemas/Reservation",
+                        "nullable": true
+                    },
+                    "birdViewModel": {
+                        "$ref": "#/components/schemas/BirdViewModel",
+                        "nullable": true
+                    },
+                    "tableGroupModel": {
+                        "$ref": "#/components/schemas/TableGroupModel",
+                        "nullable": true
+                    },
+                    "tableModel": {
+                        "$ref": "#/components/schemas/TableModel",
+                        "nullable": true
+                    },
+                    "timeLine": {
+                        "$ref": "#/components/schemas/TimeLineModel",
+                        "nullable": true
+                    },
+                    "ReportKlubModel": {
+                        "$ref": "#/components/schemas/ReportKlubModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "BirdViewModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    },
+                    "klubId": { "type": "string", "nullable": true },
+                    "image": { "type": "string", "nullable": true },
+                    "name": { "type": "string", "nullable": true },
+                    "visible": { "type": "string", "nullable": true },
+                    "index": { "type": "int", "nullable": true },
+                    "table": {
+                        "$ref": "#/components/schemas/TableModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "KlubReview": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "image": { "type": "string", "nullable": true },
+                    "content": { "type": "string", "nullable": true },
+                    "writerId": { "type": "string", "nullable": true },
+                    "klubId": { "type": "string", "nullable": true },
+                    "reservationId": { "type": "string", "nullable": false },
+                    "star": { "type": "int", "nullable": true },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "Klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    },
+                    "writer": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    },
+                    "like": {
+                        "$ref": "#/components/schemas/KlubReviewLikeModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "KlubReviewLikeModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "like": { "type": "int", "nullable": true },
+                    "klubReviewId": { "type": "string", "nullable": false },
+                    "userId": { "type": "string", "nullable": true },
+                    "kubReview": {
+                        "$ref": "#/components/schemas/KlubReview",
+                        "nullable": false
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "KlubInfo": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "klubId": { "type": "string", "nullable": true },
+                    "smoke": { "type": "string", "nullable": false },
+                    "manAgeLower": { "type": "int", "nullable": false },
+                    "manAgeHigher": { "type": "int", "nullable": false },
+                    "womanAgeLower": { "type": "int", "nullable": false },
+                    "womanAgeHigher": { "type": "int", "nullable": false },
+                    "open": { "nullable": false },
+                    "close": { "nullable": false },
+                    "holidaysByWeek": { "type": "string", "nullable": false },
+                    "holidaysByMonth": { "type": "string", "nullable": false },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    }
+                }
+            },
+            "TimeLineModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "klubId": { "type": "string", "nullable": true },
+                    "image": { "type": "string", "nullable": true },
+                    "content": { "type": "string", "nullable": true },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "orderIndex": { "type": "int", "nullable": true },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    }
+                }
+            },
+            "UserSettingProfileModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": true },
+                    "country": { "type": "string", "nullable": true },
+                    "language": { "type": "string", "nullable": true },
+                    "lat": { "nullable": false },
+                    "lon": { "nullable": false },
+                    "inviteLink": { "type": "string", "nullable": false },
+                    "verifyData": { "type": "string", "nullable": false },
+                    "pushToken": { "type": "string", "nullable": false },
+                    "ip": { "type": "string", "nullable": false },
+                    "profileUrl": { "type": "string", "nullable": false },
+                    "pushAllow": { "nullable": true },
+                    "pushNightlyAllow": { "nullable": true },
+                    "smsAllow": { "nullable": true },
+                    "callAllow": { "nullable": true },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "CardModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": true },
+                    "cardNumber": { "type": "string", "nullable": true },
+                    "originalNumber": { "type": "string", "nullable": true },
+                    "billKey": { "type": "string", "nullable": true },
+                    "pgId": { "type": "string", "nullable": true },
+                    "pgInfo": { "type": "string", "nullable": true },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "hashed": { "type": "string", "nullable": true },
+                    "order": { "type": "int", "nullable": true },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "LoungePostModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": false },
+                    "title": { "type": "string", "nullable": false },
+                    "content": { "type": "string", "nullable": false },
+                    "category": {
+                        "$ref": "#/components/schemas/PostCategory",
+                        "nullable": true
+                    },
+                    "data": { "type": "object", "nullable": false },
+                    "dataStr": { "type": "string", "nullable": false },
+                    "images": { "type": "string", "nullable": true },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "writeUser": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": false
+                    },
+                    "comments": {
+                        "$ref": "#/components/schemas/LoungePostCommentModel",
+                        "nullable": true
+                    },
+                    "views": { "type": "int", "nullable": true },
+                    "ReportLoungeCommentModel": {
+                        "$ref": "#/components/schemas/ReportLoungeCommentModel",
+                        "nullable": true
+                    },
+                    "ReportLoungeModel": {
+                        "$ref": "#/components/schemas/ReportLoungeModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "LoungePostCommentModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "title": { "type": "string", "nullable": false },
+                    "content": { "type": "string", "nullable": false },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "userId": { "type": "string", "nullable": true },
+                    "postId": { "type": "string", "nullable": true },
+                    "post": {
+                        "$ref": "#/components/schemas/LoungePostModel",
+                        "nullable": true
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    },
+                    "comments": {
+                        "$ref": "#/components/schemas/LoungePostCommentModel",
+                        "nullable": true
+                    },
+                    "image": { "type": "string", "nullable": true },
+                    "loungePostCommentModel": {
+                        "$ref": "#/components/schemas/LoungePostCommentModel",
+                        "nullable": false
+                    },
+                    "loungePostCommentModelId": {
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "ReportLoungeCommentModel": {
+                        "$ref": "#/components/schemas/ReportLoungeCommentModel",
+                        "nullable": true
+                    },
+                    "LoungePostCommentLikeModel": {
+                        "$ref": "#/components/schemas/LoungePostCommentLikeModel",
+                        "nullable": true
+                    },
+                    "LoungePostLikeModel": {
+                        "$ref": "#/components/schemas/LoungePostLikeModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "ChattingRoomModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "state": {
+                        "$ref": "#/components/schemas/ChatRoomType",
+                        "nullable": true
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "recent": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "chatModel": {
+                        "$ref": "#/components/schemas/ChatModel",
+                        "nullable": true
+                    },
+                    "users": {
+                        "$ref": "#/components/schemas/UsersOnChatRooms",
+                        "nullable": true
+                    },
+                    "ReportChatModel": {
+                        "$ref": "#/components/schemas/ReportChatModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "ChatModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "content": { "type": "string", "nullable": false },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "chatRoomId": { "type": "string", "nullable": true },
+                    "data": { "type": "object", "nullable": false },
+                    "image": { "type": "string", "nullable": false },
+                    "userId": { "type": "string", "nullable": true },
+                    "chattingRoomModel": {
+                        "$ref": "#/components/schemas/ChattingRoomModel",
+                        "nullable": true
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    },
+                    "ReportChatModel": {
+                        "$ref": "#/components/schemas/ReportChatModel",
+                        "nullable": false
+                    },
+                    "reportChatModelId": { "type": "string", "nullable": false }
+                }
+            },
+            "TableGroupModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "groupName": { "type": "string", "nullable": true },
+                    "groupPrice": { "type": "int", "nullable": true },
+                    "comments": { "type": "string", "nullable": true },
+                    "klubId": { "type": "string", "nullable": true },
+                    "image": { "type": "string", "nullable": true },
+                    "klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    },
+                    "tableModel": {
+                        "$ref": "#/components/schemas/TableModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "TableModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "info": { "type": "string", "nullable": false },
+                    "poligonType": { "type": "string", "nullable": true },
+                    "poligonInfo": { "type": "object", "nullable": true },
+                    "klubId": { "type": "string", "nullable": true },
+                    "tableGroupModelId": {
+                        "type": "string",
+                        "nullable": false
+                    },
+                    "tablePrice": { "type": "int", "nullable": true },
+                    "image": { "type": "string", "nullable": true },
+                    "name": { "type": "string", "nullable": true },
+                    "klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    },
+                    "tableGroup": {
+                        "$ref": "#/components/schemas/TableGroupModel",
+                        "nullable": false
+                    },
+                    "reservation": {
+                        "$ref": "#/components/schemas/Reservation",
+                        "nullable": true
+                    },
+                    "birdViewModel": {
+                        "$ref": "#/components/schemas/BirdViewModel",
+                        "nullable": false
+                    },
+                    "birdViewModelId": { "type": "string", "nullable": true }
+                }
+            },
+            "ReportModel": {
+                "type": "object",
+                "properties": { "id": { "type": "string", "nullable": true } }
+            },
+            "AuctionModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "reservationId": { "type": "string", "nullable": false }
+                }
+            },
+            "AuctionBidModel": {
+                "type": "object",
+                "properties": { "id": { "type": "string", "nullable": true } }
+            },
+            "Reservation": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "klubId": { "type": "string", "nullable": true },
+                    "tableModelId": { "type": "string", "nullable": true },
+                    "userModelUserId": { "type": "string", "nullable": true },
+                    "mdModelId": { "type": "string", "nullable": true },
+                    "reservateDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "outDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "people": { "type": "int", "nullable": false },
+                    "price": { "nullable": true },
+                    "ref": { "type": "string", "nullable": true },
+                    "auctionModelId": { "type": "string", "nullable": false },
+                    "klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    },
+                    "md": {
+                        "$ref": "#/components/schemas/MdModel",
+                        "nullable": true
+                    },
+                    "table": {
+                        "$ref": "#/components/schemas/TableModel",
+                        "nullable": true
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    }
+                }
+            },
+            "MdRequestModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": true },
+                    "klubId": { "type": "string", "nullable": true },
+                    "message": { "type": "string", "nullable": true },
+                    "accepted": {
+                        "$ref": "#/components/schemas/AcceptedType",
+                        "nullable": true
+                    },
+                    "accetedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "Klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    },
+                    "User": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "UsersOnChatRooms": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "userId": { "type": "string", "nullable": true },
+                    "chatRoomId": { "type": "string", "nullable": true },
+                    "mute": { "nullable": true },
+                    "muteBy": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "chattingRoomModel": {
+                        "$ref": "#/components/schemas/ChattingRoomModel",
+                        "nullable": true
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "ReportBaseModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "reportUser": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    },
+                    "reportUserId": { "type": "string", "nullable": true },
+                    "reportedUser": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": false
+                    },
+                    "reportedUserId": { "type": "string", "nullable": false },
+                    "detail": { "type": "string", "nullable": true },
+                    "reference": { "type": "string", "nullable": true },
+                    "UserModel": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": false
+                    },
+                    "userModelUserId": { "type": "string", "nullable": false },
+                    "chat": {
+                        "$ref": "#/components/schemas/ReportChatModel",
+                        "nullable": false
+                    },
+                    "lounge": {
+                        "$ref": "#/components/schemas/ReportLoungeModel",
+                        "nullable": false
+                    },
+                    "loungeComment": {
+                        "$ref": "#/components/schemas/ReportLoungeCommentModel",
+                        "nullable": false
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/ReportUserModel",
+                        "nullable": false
+                    },
+                    "md": {
+                        "$ref": "#/components/schemas/ReportMdModel",
+                        "nullable": false
+                    },
+                    "klub": {
+                        "$ref": "#/components/schemas/ReportKlubModel",
+                        "nullable": false
+                    }
+                }
+            },
+            "ReportChatModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "chatRoom": {
+                        "$ref": "#/components/schemas/ChattingRoomModel",
+                        "nullable": true
+                    },
+                    "chattings": {
+                        "$ref": "#/components/schemas/ChatModel",
+                        "nullable": true
+                    },
+                    "basemodel": {
+                        "$ref": "#/components/schemas/ReportBaseModel",
+                        "nullable": true
+                    },
+                    "reportBaseModelId": { "type": "string", "nullable": true },
+                    "chattingRoomModelId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "checkAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    },
+                    "createAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "updateAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "deleteAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": false
+                    }
+                }
+            },
+            "ReportLoungeModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "basemodel": {
+                        "$ref": "#/components/schemas/ReportBaseModel",
+                        "nullable": true
+                    },
+                    "reportBaseModelId": { "type": "string", "nullable": true },
+                    "loungePost": {
+                        "$ref": "#/components/schemas/LoungePostModel",
+                        "nullable": true
+                    },
+                    "loungePostModelId": { "type": "string", "nullable": true }
+                }
+            },
+            "ReportLoungeCommentModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "lounge": {
+                        "$ref": "#/components/schemas/LoungePostModel",
+                        "nullable": true
+                    },
+                    "comment": {
+                        "$ref": "#/components/schemas/LoungePostCommentModel",
+                        "nullable": true
+                    },
+                    "loungePostModelId": { "type": "string", "nullable": true },
+                    "loungePostCommentModelId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "basemodel": {
+                        "$ref": "#/components/schemas/ReportBaseModel",
+                        "nullable": true
+                    },
+                    "reportBaseModelId": { "type": "string", "nullable": true }
+                }
+            },
+            "ReportUserModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "basemodel": {
+                        "$ref": "#/components/schemas/ReportBaseModel",
+                        "nullable": true
+                    },
+                    "reportBaseModelId": { "type": "string", "nullable": true }
+                }
+            },
+            "ReportMdModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "basemodel": {
+                        "$ref": "#/components/schemas/ReportBaseModel",
+                        "nullable": true
+                    },
+                    "reportBaseModelId": { "type": "string", "nullable": true }
+                }
+            },
+            "ReportKlubModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "basemodel": {
+                        "$ref": "#/components/schemas/ReportBaseModel",
+                        "nullable": true
+                    },
+                    "reportBaseModelId": { "type": "string", "nullable": true },
+                    "klubId": { "type": "string", "nullable": true },
+                    "klub": {
+                        "$ref": "#/components/schemas/Klub",
+                        "nullable": true
+                    }
+                }
+            },
+            "LoungePostCommentLikeModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "like": { "type": "int", "nullable": true },
+                    "comment": {
+                        "$ref": "#/components/schemas/LoungePostCommentModel",
+                        "nullable": true
+                    },
+                    "loungePostCommentModelId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "userId": { "type": "string", "nullable": true },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "LoungePostLikeModel": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "like": { "type": "int", "nullable": true },
+                    "loungePost": {
+                        "$ref": "#/components/schemas/LoungePostCommentModel",
+                        "nullable": true
+                    },
+                    "loungePostCommentModelId": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "userId": { "type": "string", "nullable": true },
+                    "user": {
+                        "$ref": "#/components/schemas/UserModel",
+                        "nullable": true
+                    }
+                }
+            },
+            "Banner": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "string", "nullable": true },
+                    "image": { "type": "string", "nullable": true },
+                    "dataStr": { "type": "string", "nullable": true },
+                    "data": { "type": "object", "nullable": true }
+                }
+            },
+            "Gender": {
+                "type": "string",
+                "enum": ["Female", "Male", "Others"],
+                "nullable": false
+            },
+            "AcceptedType": {
+                "type": "string",
+                "enum": ["accepted", "denied", "postpone", "none"],
+                "nullable": false
+            },
+            "ChatRoomType": {
+                "type": "string",
+                "enum": ["none", "open", "close"],
+                "nullable": false
+            },
+            "KlubType": {
+                "type": "string",
+                "enum": ["club", "loungeBar", "karaoke"],
+                "nullable": false
+            },
+            "PostCategory": {
+                "type": "string",
+                "enum": [
+                    "MaleOnly",
+                    "FemaleOnly",
+                    "MDOnly",
+                    "AdultOnly",
+                    "Open",
+                    "Korean",
+                    "English",
+                    "Notice",
+                    "BossOnly"
+                ],
+                "nullable": false
+            },
+            "MdPermission": {
+                "type": "string",
+                "enum": [
+                    "makeAuction",
+                    "cleanTable",
+                    "acceptMd",
+                    "writePost",
+                    "editProfile",
+                    "acceptReservation"
+                ],
+                "nullable": false
+            }
+        }
+    }
+}

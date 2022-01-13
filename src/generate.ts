@@ -3,6 +3,8 @@ import * as path from 'path';
 import * as child_process from 'child_process';
 import fs from 'fs';
 import os from 'os';
+import YAML from 'yaml';
+import { format } from 'prettier';
 
 export interface DMLModel {
     name: string;
@@ -58,15 +60,69 @@ function getDataModelFieldWithoutParsing(parsed: string) {
     return parsed.slice(openingBracket, closingBracket);
 }
 
+interface ParseEnumValue {
+    name: string;
+    dbName?: string;
+}
+interface ParsedEnums {
+    name: string;
+    values: ParseEnumValue[];
+    dbName?: string;
+}
+
+interface ParsedModel {
+    name: string;
+    dbName?: string;
+    fields: ModelField[];
+    isGenerated: boolean;
+    primaryKey?: string;
+    uniqueFields?: string[];
+    uniqueIndexes?: string[];
+}
+
+interface feildDefault {
+    name: defaultEnum;
+    args?: string[];
+}
+
+type defaultEnum = 'autoincrement' | 'uuid' | string;
+type prismaDefault = feildDefault | any;
+type dbType = 'Int' | 'String' | 'DateTime' | 'Json';
+type SwaggerType = 'string' | 'int' | 'number' | 'object';
+const swaggerTypeArray = ['string', 'int', 'number'];
+interface ModelField {
+    name: string;
+    kind: 'scalar' | 'object' | 'enum';
+    isList: boolean;
+    isRequired: boolean;
+    isUnique: boolean;
+    isId: boolean;
+    isReadOnly: boolean;
+    type: dbType;
+    hasDefaultValue: boolean;
+    default: feildDefault;
+    isGenerated: boolean;
+    isUpdatedAt: boolean;
+}
+
+interface SwaggerField {
+    type?: SwaggerType;
+    enum?: string[];
+    format?: string;
+    nullable?: boolean;
+    default?: string;
+    $ref?: string;
+}
+
+interface SwaggerModel {
+    [key: string]: SwaggerField;
+}
+
 export async function parseDatamodel(
     engine: string,
     model: string,
     tmpDir: string
 ) {
-    // Could theoretically use original file instead of re-writing the option
-    // string to new file but logic for finding correct schema.prisma in
-    // monorepos and containers can be tricky (see Prisma issue log) so safer
-    // to rely on given content
     const tmpSchema = path.resolve(path.join(tmpDir, 'schema.prisma'));
 
     fs.writeFileSync(tmpSchema, model);
@@ -199,89 +255,129 @@ export const mapPrismaToDb = (dmlModels: DMLModel[], dataModel: string) => {
 };
 
 export default async (options: GeneratorOptions) => {
-    try {
-        const output = options.generator.output?.value || './prisma/ERD.svg';
-        const config = options.generator.config;
-        const theme = config.theme || 'forest';
+    // try {
+    const output = options.generator.output?.value || './prisma/ERD.svg';
+    const config = options.generator.config;
+    const theme = config.theme || 'forest';
 
-        if (!options.binaryPaths?.queryEngine)
-            throw new Error('no query engine found');
+    if (!options.binaryPaths?.queryEngine)
+        throw new Error('no query engine found');
 
-        const queryEngine =
-            options.binaryPaths?.queryEngine[
-                Object.keys(options.binaryPaths?.queryEngine)[0]
-            ];
+    const queryEngine =
+        options.binaryPaths?.queryEngine[
+            Object.keys(options.binaryPaths?.queryEngine)[0]
+        ];
 
-        const tmpDir = fs.mkdtempSync(os.tmpdir() + path.sep + 'prisma-erd-');
+    const tmpDir = fs.mkdtempSync(os.tmpdir() + path.sep + 'prisma-erd-');
 
-        // https://github.com/notiz-dev/prisma-dbml-generator
-        const datamodelString = await parseDatamodel(
-            queryEngine,
-            options.datamodel,
-            tmpDir
-        );
-        if (!datamodelString) throw new Error('could not parse datamodel');
+    // https://github.com/notiz-dev/prisma-dbml-generator
+    const datamodelString = await parseDatamodel(
+        queryEngine,
+        options.datamodel,
+        tmpDir
+    );
+    if (!datamodelString) throw new Error('could not parse datamodel');
 
-        let dml: DML = JSON.parse(datamodelString);
+    fs.writeFileSync('./prisma/ssssss.txt', datamodelString);
 
-        // updating dml to map to db table and column names (@map && @@map)
-        dml.models = mapPrismaToDb(dml.models, options.datamodel);
+    const json = {};
 
-        const mermaid = renderDml(dml);
+    const parsedData = JSON.parse(datamodelString);
+    const parsedEnum: ParsedEnums[] = parsedData.enums;
+    const parsedModel: ParsedModel[] = parsedData.models;
 
-        if (!mermaid)
-            throw new Error('failed to construct mermaid instance from dml');
+    const swaggedEnum: SwaggerModel = {};
+    parsedEnum.forEach((e: ParsedEnums) => {
+        swaggedEnum[e.name] = {
+            type: 'string',
+            enum: e.values.map((e) => e.name),
+            nullable: false,
+            // default : e.
+        };
+    });
+    const swaggedModel: any = {};
+    parsedModel.forEach((e: ParsedModel): any => {
+        var obj: any = {};
+        e.fields.forEach((e: ModelField) => {
+            obj[e.name as string] = {
+                type: swaggerTypeArray.includes(e.type.toLowerCase())
+                    ? e.type.toLowerCase()
+                    : e.type == 'DateTime'
+                    ? 'string'
+                    : e.type === 'Json'
+                    ? 'object'
+                    : undefined,
+                $ref:
+                    e.kind === 'enum'
+                        ? `#/components/schemas/${e.type}`
+                        : e.kind === 'object'
+                        ? `#/components/schemas/${e.type}`
+                        : undefined,
+                format: e.type == 'DateTime' ? 'date-time' : undefined,
+                nullable: e.isRequired,
+            };
+        });
+        swaggedModel[e.name] = {
+            type: 'object',
+            properties: {
+                ...obj,
+            },
+        };
+    });
 
-        if (output.endsWith('.md'))
-            return fs.writeFileSync(
-                output,
-                '```mermaid' + `\n` + mermaid + '```' + `\n`
-            );
+    const dd = swaggedModel as SwaggerModel;
+    const kim = Object.keys(dd).flatMap((e: string): any => ({
+        [e]: {
+            name: e,
+            in: 'query',
+            description: '',
+            required: false,
+            schema: {
+                type: dd[e].type,
+                format: dd[e].format,
+            },
+        },
+    }));
 
-        const tempMermaidFile = path.resolve(path.join(tmpDir, 'prisma.mmd'));
-        fs.writeFileSync(tempMermaidFile, mermaid);
-
-        const tempConfigFile = path.resolve(path.join(tmpDir, 'config.json'));
-        fs.writeFileSync(
-            tempConfigFile,
-            JSON.stringify({ deterministicIds: true, maxTextSize: 90000 })
-        );
-
-        let mermaidCliNodePath = path.resolve(
-            path.join('node_modules', '.bin', 'mmdc')
-        );
-
-        if (!fs.existsSync(mermaidCliNodePath)) {
-            const findMermaidCli = child_process
-                .execSync('find ../.. -name mmdc')
-                .toString()
-                .split('\n')
-                .filter((path) => path)
-                .pop();
-            if (!findMermaidCli || !fs.existsSync(findMermaidCli)) {
-                throw new Error(
-                    `Expected mermaid CLI at \n${mermaidCliNodePath}\n\nor\n${findMermaidCli}\n but this package was not found.`
-                );
-            } else {
-                mermaidCliNodePath = findMermaidCli;
-            }
-        }
-
-        child_process.execSync(
-            `${mermaidCliNodePath} -i ${tempMermaidFile} -o ${output} -t ${theme} -c ${tempConfigFile}`,
-            {
-                stdio: 'inherit',
-            }
-        );
-
-        // throw error if file was not created
-        if (!fs.existsSync(output)) {
-            throw new Error(
-                `Issue generating ER Diagram. Expected ${output} to be created`
-            );
-        }
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
+    fs.writeFileSync(
+        './prisma/paratest.json',
+        JSON.stringify({
+            kim,
+        })
+    );
+    buildSwaggerDocs({
+        enum: swaggedEnum,
+        swaggedModel: swaggedModel,
+    });
 };
+function buildSwaggerDocs(arg0: { enum: any; swaggedModel: any }) {
+    fs.writeFileSync(
+        './prisma/result.json',
+        JSON.stringify({
+            components: {
+                schemas: {
+                    ...arg0.swaggedModel,
+                    ...arg0.enum,
+                },
+            },
+        })
+    );
+
+    const doc = new YAML.Document();
+
+    doc.contents = JSON.parse(
+        JSON.stringify({
+            components: {
+                schemas: {
+                    ...arg0.swaggedModel,
+                    ...arg0.enum,
+                },
+            },
+        })
+    );
+
+    const parameterDocs = new YAML.Document();
+
+    fs.writeFileSync('./prisma/result.yaml', doc.toString());
+    fs.writeFileSync('./prisma/parameters.yaml', doc.toString());
+}

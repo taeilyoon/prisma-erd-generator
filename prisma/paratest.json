@@ -1,0 +1,346 @@
+{
+    "kim": [
+        {
+            "UserModel": {
+                "name": "UserModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "NotificationModel": {
+                "name": "NotificationModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "NiceIdentify": {
+                "name": "NiceIdentify",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "Securities": {
+                "name": "Securities",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "SessionModel": {
+                "name": "SessionModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "MdModel": {
+                "name": "MdModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "MdLikeHistory": {
+                "name": "MdLikeHistory",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "klubLikeHistory": {
+                "name": "klubLikeHistory",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "Klub": {
+                "name": "Klub",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "BirdViewModel": {
+                "name": "BirdViewModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "KlubReview": {
+                "name": "KlubReview",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "KlubReviewLikeModel": {
+                "name": "KlubReviewLikeModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "KlubInfo": {
+                "name": "KlubInfo",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "TimeLineModel": {
+                "name": "TimeLineModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "UserSettingProfileModel": {
+                "name": "UserSettingProfileModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "CardModel": {
+                "name": "CardModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "LoungePostModel": {
+                "name": "LoungePostModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "LoungePostCommentModel": {
+                "name": "LoungePostCommentModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ChattingRoomModel": {
+                "name": "ChattingRoomModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ChatModel": {
+                "name": "ChatModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "TableGroupModel": {
+                "name": "TableGroupModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "TableModel": {
+                "name": "TableModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ReportModel": {
+                "name": "ReportModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "AuctionModel": {
+                "name": "AuctionModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "AuctionBidModel": {
+                "name": "AuctionBidModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "Reservation": {
+                "name": "Reservation",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "MdRequestModel": {
+                "name": "MdRequestModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "UsersOnChatRooms": {
+                "name": "UsersOnChatRooms",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ReportBaseModel": {
+                "name": "ReportBaseModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ReportChatModel": {
+                "name": "ReportChatModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ReportLoungeModel": {
+                "name": "ReportLoungeModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ReportLoungeCommentModel": {
+                "name": "ReportLoungeCommentModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ReportUserModel": {
+                "name": "ReportUserModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ReportMdModel": {
+                "name": "ReportMdModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "ReportKlubModel": {
+                "name": "ReportKlubModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "LoungePostCommentLikeModel": {
+                "name": "LoungePostCommentLikeModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "LoungePostLikeModel": {
+                "name": "LoungePostLikeModel",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        },
+        {
+            "Banner": {
+                "name": "Banner",
+                "in": "query",
+                "description": "",
+                "required": false,
+                "schema": { "type": "object" }
+            }
+        }
+    ]
+}

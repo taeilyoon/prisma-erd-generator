@@ -1,0 +1,6495 @@
+{
+    "enums": [
+      {
+        "name": "Gender",
+        "values": [
+          {
+            "name": "Female",
+            "dbName": null
+          },
+          {
+            "name": "Male",
+            "dbName": null
+          },
+          {
+            "name": "Others",
+            "dbName": null
+          }
+        ],
+        "dbName": null
+      },
+      {
+        "name": "AcceptedType",
+        "values": [
+          {
+            "name": "accepted",
+            "dbName": null
+          },
+          {
+            "name": "denied",
+            "dbName": null
+          },
+          {
+            "name": "postpone",
+            "dbName": null
+          },
+          {
+            "name": "none",
+            "dbName": null
+          }
+        ],
+        "dbName": null
+      },
+      {
+        "name": "ChatRoomType",
+        "values": [
+          {
+            "name": "none",
+            "dbName": null
+          },
+          {
+            "name": "open",
+            "dbName": null
+          },
+          {
+            "name": "close",
+            "dbName": null
+          }
+        ],
+        "dbName": null
+      },
+      {
+        "name": "KlubType",
+        "values": [
+          {
+            "name": "club",
+            "dbName": null
+          },
+          {
+            "name": "loungeBar",
+            "dbName": null
+          },
+          {
+            "name": "karaoke",
+            "dbName": null
+          }
+        ],
+        "dbName": null
+      },
+      {
+        "name": "PostCategory",
+        "values": [
+          {
+            "name": "MaleOnly",
+            "dbName": null
+          },
+          {
+            "name": "FemaleOnly",
+            "dbName": null
+          },
+          {
+            "name": "MDOnly",
+            "dbName": null
+          },
+          {
+            "name": "AdultOnly",
+            "dbName": null
+          },
+          {
+            "name": "Open",
+            "dbName": null
+          },
+          {
+            "name": "Korean",
+            "dbName": null
+          },
+          {
+            "name": "English",
+            "dbName": null
+          },
+          {
+            "name": "Notice",
+            "dbName": null
+          },
+          {
+            "name": "BossOnly",
+            "dbName": null
+          }
+        ],
+        "dbName": "PostCatergory"
+      },
+      {
+        "name": "MdPermission",
+        "values": [
+          {
+            "name": "makeAuction",
+            "dbName": null
+          },
+          {
+            "name": "cleanTable",
+            "dbName": null
+          },
+          {
+            "name": "acceptMd",
+            "dbName": null
+          },
+          {
+            "name": "writePost",
+            "dbName": null
+          },
+          {
+            "name": "editProfile",
+            "dbName": null
+          },
+          {
+            "name": "acceptReservation",
+            "dbName": null
+          }
+        ],
+        "dbName": null
+      }
+    ],
+    "models": [
+      {
+        "name": "UserModel",
+        "dbName": "User",
+        "fields": [
+          {
+            "name": "name",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "nick",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "gender",
+            "kind": "enum",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Gender",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "phone",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "hashedPassword",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "email",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "birth",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "accepted",
+            "kind": "enum",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "AcceptedType",
+            "hasDefaultValue": true,
+            "default": "accepted",
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "isAdmin",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Boolean",
+            "hasDefaultValue": true,
+            "default": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "blockUntil",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "blockLounge",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "blockChat",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "usedAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "like",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "card",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "CardModel",
+            "hasDefaultValue": false,
+            "relationName": "CardModelToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ChatModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ChatModel",
+            "hasDefaultValue": false,
+            "relationName": "ChatModelToUser",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "writeKlubReview",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "KlubReview",
+            "hasDefaultValue": false,
+            "relationName": "KlubReviewToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "md",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "MdModel",
+            "hasDefaultValue": false,
+            "relationName": "MdModelToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "MdRequestModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "MdRequestModel",
+            "hasDefaultValue": false,
+            "relationName": "MdRequestModelToUser",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "niceIdentify",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "NiceIdentify",
+            "hasDefaultValue": false,
+            "relationName": "NiceIdentifyToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "notification",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "NotificationModel",
+            "hasDefaultValue": false,
+            "relationName": "NotificationModelToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "PostComment",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "Post",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostModelToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "Reservation",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Reservation",
+            "hasDefaultValue": false,
+            "relationName": "ReservationToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ReviewLikeModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "KlubReviewLikeModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubReviewLikeModelToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "securities",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Securities",
+            "hasDefaultValue": false,
+            "relationName": "SecuritiesToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "sassion",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "SessionModel",
+            "hasDefaultValue": false,
+            "relationName": "SessionModelToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "setting",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserSettingProfileModel",
+            "hasDefaultValue": false,
+            "relationName": "UserModelToUserSettingProfileModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "UsersOnChatRooms",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UsersOnChatRooms",
+            "hasDefaultValue": false,
+            "relationName": "UserToUsersOnChatRooms",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "report",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportBaseModel",
+            "hasDefaultValue": false,
+            "relationName": "report",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reported",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportBaseModel",
+            "hasDefaultValue": false,
+            "relationName": "reported",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ReportBaseModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportBaseModel",
+            "hasDefaultValue": false,
+            "relationName": "reported ",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "LoungePostCommentLikeModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostCommentLikeModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentLikeModelToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "LoungePostLikeModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostLikeModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostLikeModelToUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "beLike",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "MdLikeHistory",
+            "hasDefaultValue": false,
+            "relationName": "likedMd",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "myLikesMd",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "MdLikeHistory",
+            "hasDefaultValue": false,
+            "relationName": "likeMd",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "NotificationModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "title",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "content",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "data",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Json",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "dataStr",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "image",
+            "kind": "scalar",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "readAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "NotificationModelToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "NiceIdentify",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "requestId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "responseId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "authMethod",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "nationalInfo",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "duplicateInfo",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "connectionInfo",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "mobile",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "mobileCompany",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "NiceIdentifyToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "Securities",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "cashKRW",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "cashUSD",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "flowerKRW",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "flowerUSD",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "SecuritiesToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "SessionModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "sessionId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "platform",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": "",
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "SessionModelToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "usedAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "MdModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "isManager",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Boolean",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "isSubManager",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Boolean",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "allows",
+            "kind": "enum",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "MdPermission",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "KlubToMdModel",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "MdModelToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "Reservation",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Reservation",
+            "hasDefaultValue": false,
+            "relationName": "MdModelToReservation",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "MdLikeHistory",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "likedMd",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "likedMd",
+            "relationFromFields": [
+              "MdId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "MdId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "UserModel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "likeMd",
+            "relationFromFields": [
+              "userModelUserId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userModelUserId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "klubLikeHistory",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "Klub",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "name",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "logo",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "banner",
+            "kind": "scalar",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "phone",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "isShown",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Boolean",
+            "hasDefaultValue": true,
+            "default": true,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "hashTag",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "musicTag",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "lat",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "lng",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "address",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": "",
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "star",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "acceptAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "accepted",
+            "kind": "enum",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "AcceptedType",
+            "hasDefaultValue": true,
+            "default": "accepted",
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "profileUrl",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "message",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": "",
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubInfo",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "KlubInfo",
+            "hasDefaultValue": false,
+            "relationName": "KlubToKlubInfo",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reviews",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "KlubReview",
+            "hasDefaultValue": false,
+            "relationName": "KlubToKlubReview",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "md",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "MdModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubToMdModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "MdRequestModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "MdRequestModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubToMdRequestModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "Reservation",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Reservation",
+            "hasDefaultValue": false,
+            "relationName": "KlubToReservation",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "birdViewModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "BirdViewModel",
+            "hasDefaultValue": false,
+            "relationName": "BirdViewModelToKlub",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "tableGroupModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "TableGroupModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubToTableGroupModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "tableModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "TableModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubToTableModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "timeLine",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "TimeLineModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubToTimeLineModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ReportKlubModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportKlubModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubToReportKlubModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "BirdViewModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "BirdViewModelToKlub",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "image",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "name",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "visible",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "index",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "table",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "TableModel",
+            "hasDefaultValue": false,
+            "relationName": "BirdViewModelToTableModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "KlubReview",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "image",
+            "kind": "scalar",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "content",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "writerId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reservationId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "star",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": true,
+            "default": 3.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "Klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "KlubToKlubReview",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "writer",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubReviewToUserModel",
+            "relationFromFields": [
+              "writerId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "like",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "KlubReviewLikeModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubReviewToKlubReviewLikeModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "KlubReviewLikeModel",
+        "dbName": "ReviewLikeModel",
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "like",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": true,
+            "default": 1.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubReviewId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "kubReview",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "KlubReview",
+            "hasDefaultValue": false,
+            "relationName": "KlubReviewToKlubReviewLikeModel",
+            "relationFromFields": [
+              "klubReviewId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "KlubReviewLikeModelToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "KlubInfo",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "smoke",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "manAgeLower",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "manAgeHigher",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "womanAgeLower",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "womanAgeHigher",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "open",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "close",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "holidaysByWeek",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "holidaysByMonth",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "KlubToKlubInfo",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "TimeLineModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "image",
+            "kind": "scalar",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "content",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "startDate",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "endDate",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "orderIndex",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "KlubToTimeLineModel",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "UserSettingProfileModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "country",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": "kr",
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "language",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": "ko",
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "lat",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "lon",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "inviteLink",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "verifyData",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "pushToken",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ip",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "profileUrl",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "pushAllow",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Boolean",
+            "hasDefaultValue": true,
+            "default": true,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "pushNightlyAllow",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Boolean",
+            "hasDefaultValue": true,
+            "default": true,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "smsAllow",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Boolean",
+            "hasDefaultValue": true,
+            "default": true,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "callAllow",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Boolean",
+            "hasDefaultValue": true,
+            "default": true,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "UserModelToUserSettingProfileModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "CardModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "cardNumber",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "originalNumber",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "billKey",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "pgId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "pgInfo",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": "IAMPORT",
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "hashed",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "order",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "CardModelToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "LoungePostModel",
+        "dbName": "PostModel",
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "title",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "content",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "category",
+            "kind": "enum",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "PostCategory",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "data",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Json",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "dataStr",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "images",
+            "kind": "scalar",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "writeUser",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostModelToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "comments",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToLoungePostModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "views",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": true,
+            "default": 0.0,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ReportLoungeCommentModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportLoungeCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostModelToReportLoungeCommentModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ReportLoungeModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportLoungeModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostModelToReportLoungeModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "LoungePostCommentModel",
+        "dbName": "PostCommentModel",
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "title",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "content",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "postId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "post",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToLoungePostModel",
+            "relationFromFields": [
+              "postId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "comments",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToLoungePostCommentModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "image",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungePostCommentModel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToLoungePostCommentModel",
+            "relationFromFields": [
+              "loungePostCommentModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungePostCommentModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ReportLoungeCommentModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportLoungeCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToReportLoungeCommentModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "LoungePostCommentLikeModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostCommentLikeModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentLikeModelToLoungePostCommentModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "LoungePostLikeModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostLikeModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToLoungePostLikeModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ChattingRoomModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "state",
+            "kind": "enum",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ChatRoomType",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "recent",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "chatModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ChatModel",
+            "hasDefaultValue": false,
+            "relationName": "ChatModelToChattingRoomModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "users",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UsersOnChatRooms",
+            "hasDefaultValue": false,
+            "relationName": "ChattingRoomModelToUsersOnChatRooms",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ReportChatModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportChatModel",
+            "hasDefaultValue": false,
+            "relationName": "ChattingRoomModelToReportChatModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ChatModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "content",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "chatRoomId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "data",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Json",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "image",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "chattingRoomModel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ChattingRoomModel",
+            "hasDefaultValue": false,
+            "relationName": "ChatModelToChattingRoomModel",
+            "relationFromFields": [
+              "chatRoomId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "ChatModelToUser",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ReportChatModel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportChatModel",
+            "hasDefaultValue": false,
+            "relationName": "ChatModelToReportChatModel",
+            "relationFromFields": [
+              "reportChatModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportChatModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "TableGroupModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "groupName",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "groupPrice",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "comments",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "image",
+            "kind": "scalar",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "KlubToTableGroupModel",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "tableModel",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "TableModel",
+            "hasDefaultValue": false,
+            "relationName": "TableGroupModelToTableModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "TableModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "info",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "poligonType",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "poligonInfo",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Json",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "tableGroupModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "tablePrice",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "image",
+            "kind": "scalar",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "name",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "KlubToTableModel",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "tableGroup",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "TableGroupModel",
+            "hasDefaultValue": false,
+            "relationName": "TableGroupModelToTableModel",
+            "relationFromFields": [
+              "tableGroupModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reservation",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Reservation",
+            "hasDefaultValue": false,
+            "relationName": "ReservationToTableModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "birdViewModel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "BirdViewModel",
+            "hasDefaultValue": false,
+            "relationName": "BirdViewModelToTableModel",
+            "relationFromFields": [
+              "birdViewModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "birdViewModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ReportModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "AuctionModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reservationId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "AuctionBidModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "Reservation",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "tableModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userModelUserId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "mdModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reservateDate",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "outDate",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "people",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "price",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Float",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "ref",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "auctionModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "KlubToReservation",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "md",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "MdModel",
+            "hasDefaultValue": false,
+            "relationName": "MdModelToReservation",
+            "relationFromFields": [
+              "mdModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "table",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "TableModel",
+            "hasDefaultValue": false,
+            "relationName": "ReservationToTableModel",
+            "relationFromFields": [
+              "tableModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "ReservationToUserModel",
+            "relationFromFields": [
+              "userModelUserId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "MdRequestModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "message",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "accepted",
+            "kind": "enum",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "AcceptedType",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "accetedDate",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "Klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "KlubToMdRequestModel",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "User",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "MdRequestModelToUser",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "UsersOnChatRooms",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "chatRoomId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "mute",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Boolean",
+            "hasDefaultValue": true,
+            "default": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "muteBy",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "chattingRoomModel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ChattingRoomModel",
+            "hasDefaultValue": false,
+            "relationName": "ChattingRoomModelToUsersOnChatRooms",
+            "relationFromFields": [
+              "chatRoomId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "UserToUsersOnChatRooms",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ReportBaseModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportUser",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "report",
+            "relationFromFields": [
+              "reportUserId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportUserId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportedUser",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "reported ",
+            "relationFromFields": [
+              "reportedUserId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportedUserId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "detail",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reference",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "UserModel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "reported",
+            "relationFromFields": [
+              "userModelUserId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userModelUserId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "chat",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportChatModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportChatModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "lounge",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportLoungeModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportLoungeModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungeComment",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportLoungeCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportLoungeCommentModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportUserModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportUserModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "md",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportMdModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportMdModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportKlubModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportKlubModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ReportChatModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "chatRoom",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ChattingRoomModel",
+            "hasDefaultValue": false,
+            "relationName": "ChattingRoomModelToReportChatModel",
+            "relationFromFields": [
+              "chattingRoomModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "chattings",
+            "kind": "object",
+            "isList": true,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ChatModel",
+            "hasDefaultValue": false,
+            "relationName": "ChatModelToReportChatModel",
+            "relationFromFields": [],
+            "relationToFields": [],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "basemodel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportBaseModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportChatModel",
+            "relationFromFields": [
+              "reportBaseModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportBaseModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "chattingRoomModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "checkAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "createAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "now",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "updateAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": true
+          },
+          {
+            "name": "deleteAt",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": false,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "DateTime",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ReportLoungeModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "basemodel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportBaseModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportLoungeModel",
+            "relationFromFields": [
+              "reportBaseModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportBaseModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungePost",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostModelToReportLoungeModel",
+            "relationFromFields": [
+              "loungePostModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungePostModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ReportLoungeCommentModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "lounge",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostModelToReportLoungeCommentModel",
+            "relationFromFields": [
+              "loungePostModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "comment",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToReportLoungeCommentModel",
+            "relationFromFields": [
+              "loungePostCommentModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungePostModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungePostCommentModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "basemodel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportBaseModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportLoungeCommentModel",
+            "relationFromFields": [
+              "reportBaseModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportBaseModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ReportUserModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "basemodel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportBaseModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportUserModel",
+            "relationFromFields": [
+              "reportBaseModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportBaseModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ReportMdModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "basemodel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportBaseModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportMdModel",
+            "relationFromFields": [
+              "reportBaseModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportBaseModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "ReportKlubModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "basemodel",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "ReportBaseModel",
+            "hasDefaultValue": false,
+            "relationName": "ReportBaseModelToReportKlubModel",
+            "relationFromFields": [
+              "reportBaseModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "reportBaseModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klubId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "klub",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Klub",
+            "hasDefaultValue": false,
+            "relationName": "KlubToReportKlubModel",
+            "relationFromFields": [
+              "klubId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "LoungePostCommentLikeModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "like",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "comment",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentLikeModelToLoungePostCommentModel",
+            "relationFromFields": [
+              "loungePostCommentModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungePostCommentModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentLikeModelToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "LoungePostLikeModel",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": true,
+            "default": {
+              "name": "uuid",
+              "args": []
+            },
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "like",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Int",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungePost",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "LoungePostCommentModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostCommentModelToLoungePostLikeModel",
+            "relationFromFields": [
+              "loungePostCommentModelId"
+            ],
+            "relationToFields": [
+              "id"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "loungePostCommentModelId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "userId",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": true,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "user",
+            "kind": "object",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "UserModel",
+            "hasDefaultValue": false,
+            "relationName": "LoungePostLikeModelToUserModel",
+            "relationFromFields": [
+              "userId"
+            ],
+            "relationToFields": [
+              "userId"
+            ],
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      },
+      {
+        "name": "Banner",
+        "dbName": null,
+        "fields": [
+          {
+            "name": "id",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": true,
+            "isId": true,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "image",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "dataStr",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "String",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          },
+          {
+            "name": "data",
+            "kind": "scalar",
+            "isList": false,
+            "isRequired": true,
+            "isUnique": false,
+            "isId": false,
+            "isReadOnly": false,
+            "type": "Json",
+            "hasDefaultValue": false,
+            "isGenerated": false,
+            "isUpdatedAt": false
+          }
+        ],
+        "isGenerated": false,
+        "primaryKey": null,
+        "uniqueFields": [],
+        "uniqueIndexes": []
+      }
+    ]
+  }

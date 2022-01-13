@@ -16,6 +16,8 @@ model Booking {
     id           Int      @id @default(autoincrement())
     inviteeEmail String
     startDateUTC DateTime
+    endDateUTC DateTime
+    endDateUT3 DateTime
     cancelCode   String
     events       Event[]
 }
